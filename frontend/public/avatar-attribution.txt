@@ -1,0 +1,6 @@
+Vanni AI presenter asset
+
+Source: Ready Player Me Visage — public/half-body.glb
+Repository: https://github.com/readyplayerme/visage
+Asset URL: https://raw.githubusercontent.com/readyplayerme/visage/main/public/half-body.glb
+The Visage project is published under the MIT license. The GLB is bundled for this local demo and should remain accompanied by this attribution.
