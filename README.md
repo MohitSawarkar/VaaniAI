@@ -20,15 +20,30 @@ Speech is rendered on the local machine. No cloud account, API key, or external 
 
 The project contains two services:
 
-    Browser
-      |
-      +-- Vite + React frontend :5173
-      |       +-- /api proxy
-      |
-      +-- FastAPI backend :8000
-              |
-              +-- pyttsx3 / SAPI5 for English and other SAPI voices
-              +-- Windows Runtime speech for Hindi voices
+    [ User in Browser (React/Vite) ]
+               │
+               ▼
+ 1. Script Input & Voice Selection (Studio.jsx)
+               │
+               ▼
+ 2. POST /api/tts (proxied via Vite on :5173 to FastAPI on :8000)
+               │
+               ▼
+ 3. Backend Engine Dispatch (backend/main.py):
+      ├── English / SAPI5  ──> pyttsx3
+      └── Hindi / Regional ──> PowerShell bridge (windows_speech.ps1)
+               │
+               ▼
+ 4. Temporary WAV Generation on Local Disk
+               │
+               ▼
+ 5. Stream WAV File to Frontend & Delete Temp File
+               │
+               ▼
+ 6. Browser Playback & Audio Engine:
+      ├── Web Audio API (useAudioEngine.js)
+      ├── Waveform Visualization (Waveform.jsx)
+      └── Audio-driven Presenter/Mouth Animation (Avatar.jsx)
 
 ### Frontend
 
